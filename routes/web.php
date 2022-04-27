@@ -15,4 +15,4 @@ use App\Http\Controllers\BlogController;
 */
 
 Route::get('/', [BlogController::class, 'index']); 
-Route::get('/post', [BlogController::class, 'show']); 
+Route::get('/post/{slug}', [BlogController::class, 'show']);

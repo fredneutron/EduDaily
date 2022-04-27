@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Psr7\Request;
+use Wink\WinkPost;
 
 class BlogController extends Controller
 {
@@ -11,23 +12,17 @@ class BlogController extends Controller
         return view('index');
     }
 
-    public function show()
+    public function show($slug)
     {
-        return view('post');
+        $post = WinkPost::live()->whereSlug($slug)->firstOrFail();
+        return view('post', compact('post'));
     }
     public function search(Request $request) {
-        $post = $request->search;
+        $slug = $request->search;
 
-        return response()->json([
-            [
-                'id' => 'uyewgii',
-                'title' => $post,
-            ],
-            [
-                'id' => 'iuyewgi',
-                'title' => 'Form Controller',
-            ],
-        ]);
+        $post = WinkPost::live()->where('slug','LIKE','%'.$slug.'%')->get();
+
+        return response()->json($post);
 
     }
 }

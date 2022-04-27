@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'path' => env('WINK_PATH', 'wink'),
+    'path' => env('WINK_PATH', 'op/s_st'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,7 +76,7 @@ return [
     |
     */
 
-    'preview_path' => '/{postSlug}',
+    'preview_path' => '/post/{postSlug}',
 
     'editor' => [
 
