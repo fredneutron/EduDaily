@@ -23,212 +23,185 @@
         <div class="simple-slider">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;opacity: 1;transform: perspective(0px);">
-                        <div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="row">
-                                        <div class="col-lg-9"><span class="badge rounded-pill bg-info title">Technology</span>
-                                            <h1 style="color: var(--bs-light);margin-bottom: 5%;font-weight: bold;">Everything you ever need to know about flowers</h1>
-                                            <p class="header-p" style="color: var(--bs-light);">Credibly empower enterprise wide mindshare for excellent "outside the box" thinking. Proactively mesh impactful meta services rather than enterprise results. Professionally generate end-to-end human capital...</p>
+                    @foreach($slides as $slide)
+                        <div class="swiper-slide" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , url(&quot;{{ $slide->featured_image != null ? $slide->featured_image : '/img/default-featured-image.jpeg' }}&quot;) center center / cover no-repeat;opacity: 1;transform: perspective(0px);">
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="row">
+                                            <div class="col-lg-9">
+                                                @foreach($slide->tags->take(3) as $tag)
+                                                    <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                                @endforeach
+                                                <h1 style="color: var(--bs-light);margin-bottom: 5%;font-weight: bold;"><a type="color: var(--bs-light) !important;" href="/post/{{ $slide->slug }}">{{ $slide->title }}</a></h1>
+                                                <p class="header-p" style="color: var(--bs-light) !important;"> {!! Str::limit(strip_tags($slide->content), 180, '...') !!}</p>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3"></div>
                                         </div>
-                                        <div class="col-lg-3 col-xl-3"></div>
                                     </div>
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-xl-6" style="padding: 2%;">
-                                            <div style="font-size: 12px;"><img style="border-radius: 30px;width: 30px;height: 30px;" src="/img/bab490de6615cf616420ded27150f20e.jpeg"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: var(--bs-light);"><i class="fa fa-comments-o" style="color: var(--bs-light);"></i>&nbsp; &nbsp;4 comments</span></div>
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="row">
+                                            <div class="col-lg-7 col-xl-6" style="padding: 2%;">
+                                                <div style="font-size: 12px;"><img style="border-radius: 30px;width: 30px;height: 30px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">{{ $slide->author->name }}</span><span style="color: var(--bs-light);"><i class="fa fa-calendar-o" style="color: var(--bs-light);"></i>&nbsp; &nbsp;{{ $slide->publish_date->diffForHumans() }}</span></div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-4"></div>
+                                            <div class="col-lg-2 col-xl-2 text-end .swiper-pag" style="padding: 5px 0;"><button class="btn btn-primary swiper-prev" type="button" style="border-radius: 25px;background: var(--bs-light);margin-right: 5px;"><i class="fas fa-less-than" style="color: var(--bs-primary);"></i></button><button class="btn btn-primary swiper-next" type="button" style="border-radius: 25px;background: var(--bs-light);"><i class="fas fa-greater-than" style="color: var(--bs-primary);"></i></button></div>
                                         </div>
-                                        <div class="col-lg-3 col-xl-4"></div>
-                                        <div class="col-lg-2 col-xl-2 text-end .swiper-pag" style="padding: 5px 0;"><button class="btn btn-primary swiper-prev" type="button" style="border-radius: 25px;background: var(--bs-light);margin-right: 5px;"><i class="fas fa-less-than" style="color: var(--bs-primary);"></i></button><button class="btn btn-primary swiper-next" type="button" style="border-radius: 25px;background: var(--bs-light);"><i class="fas fa-greater-than" style="color: var(--bs-primary);"></i></button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/39a76dc84dd0939eba68661a7c1fbadd.jpg&quot;) center center / cover no-repeat;">
-                        <div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="row">
-                                        <div class="col-lg-9"><span class="badge rounded-pill bg-info title">Technology</span>
-                                            <h1 style="color: var(--bs-light);margin-bottom: 5%;font-weight: bold;">Everything you ever need to know about flowers</h1>
-                                            <p class="header-p" style="color: var(--bs-light);">Credibly empower enterprise wide mindshare for excellent "outside the box" thinking. Proactively mesh impactful meta services rather than enterprise results. Professionally generate end-to-end human capital...</p>
-                                        </div>
-                                        <div class="col-lg-3 col-xl-3"></div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-xl-6" style="padding: 2%;">
-                                            <div style="font-size: 12px;"><img style="border-radius: 30px;width: 30px;height: 30px;" src="/img/bab490de6615cf616420ded27150f20e.jpeg"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: var(--bs-light);"><i class="fa fa-comments-o" style="color: var(--bs-light);"></i>&nbsp; &nbsp;4 comments</span></div>
-                                        </div>
-                                        <div class="col-lg-3 col-xl-4"></div>
-                                        <div class="col-lg-2 col-xl-2 text-end .swiper-pag" style="padding: 5px 0;"><button class="btn btn-primary swiper-prev" type="button" style="border-radius: 25px;background: var(--bs-light);margin-right: 5px;"><i class="fas fa-less-than" style="color: var(--bs-primary);"></i></button><button class="btn btn-primary swiper-next" type="button" style="border-radius: 25px;background: var(--bs-light);"><i class="fas fa-greater-than" style="color: var(--bs-primary);"></i></button></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_1600/v1/images/projects/fb268a37a2c640aca741f4f482d82d7c.jpg&quot;) center center / cover no-repeat;">
-                        <div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="row">
-                                        <div class="col-lg-9"><span class="badge rounded-pill bg-info title">Technology</span>
-                                            <h1 style="color: var(--bs-light);margin-bottom: 5%;font-weight: bold;">Everything you ever need to know about flowers</h1>
-                                            <p class="header-p" style="color: var(--bs-light);">Credibly empower enterprise wide mindshare for excellent "outside the box" thinking. Proactively mesh impactful meta services rather than enterprise results. Professionally generate end-to-end human capital...</p>
-                                        </div>
-                                        <div class="col-lg-3 col-xl-3"></div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-xl-6" style="padding: 2%;">
-                                            <div style="font-size: 12px;"><img style="border-radius: 30px;width: 30px;height: 30px;" src="/img/bab490de6615cf616420ded27150f20e.jpeg"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: var(--bs-light);"><i class="fa fa-comments-o" style="color: var(--bs-light);"></i>&nbsp; &nbsp;4 comments</span></div>
-                                        </div>
-                                        <div class="col-lg-3 col-xl-4"></div>
-                                        <div class="col-lg-2 col-xl-2 text-end .swiper-pag" style="padding: 5px 0;"><button class="btn btn-primary swiper-prev" type="button" style="border-radius: 25px;background: var(--bs-light);margin-right: 5px;"><i class="fas fa-less-than" style="color: var(--bs-primary);"></i></button><button class="btn btn-primary swiper-next" type="button" style="border-radius: 25px;background: var(--bs-light);"><i class="fas fa-greater-than" style="color: var(--bs-primary);"></i></button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
         <div class="row blog-b">
             <div class="col">
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col" style="padding-bottom: 20px;">
                         <h4 style="font-weight: bold;">Editor's Pick</h4>
                         <div class="row">
+                            @foreach($posts as $post)
                             <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-empty">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5>Does a blog post look better with a featured image?</h5>
-                                        <p>Authoritatively pontificate synergistic total linkage and pandemic metrics. Assertively initiate interactive architectures with end-to-end...</p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
+                                @if($post->featured_image != null)
+                                    @if(mt_rand(1, 100)  < 50)
+                                        <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
+                                            <div><a href="/post/{{ $post->slug }}">
+                                                @foreach($post->tags as $tag)
+                                                    <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                                @endforeach
+                                                <h5 style="color: var(--bs-gray-100);">{{ $post->title }}</h5>
+                                                <p></p>
+                                                <div style="font-size: 12px;">
+                                                    <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                    <span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                    <span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                                </div></a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
+                                            <a href="/post/{{ $post->slug }}">
+                                            <div class="c-top">
+                                                @foreach($post->tags as $tag)
+                                                    <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="c-bottom">
+                                                <h5>{{ $post->title }}</h5>
+                                                <div style="font-size: 12px;">
+                                                    <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                    <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                    <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                                </div>
+                                            </div></a>
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="image-card-empty">
+                                        <div><a href="/post/{{ $post->slug }}">
+                                            @foreach($post->tags as $tag)
+                                                <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                            @endforeach
+                                            <h5>{{ $post->title }}</h5>
+                                            <p>{!! Str::limit(strip_tags($slide->content), 250, '...') !!}.</p>
+                                            <div style="font-size: 12px;">
+                                                <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                            </div></a>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5 style="color: var(--bs-gray-100);">The world needs true geniuses now more than ever</h5>
-                                        <p></p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div class="c-top"><span class="badge rounded-pill bg-info title">Technology</span></div>
-                                    <div class="c-bottom">
-                                        <h5>The world needs true geniuses now more than ever</h5>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5 style="color: var(--bs-gray-100);">The world needs true geniuses now more than ever</h5>
-                                        <p></p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-empty" style="background-color: #fff;">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5>Does a blog post look better with a featured image?</h5>
-                                        <p>Authoritatively pontificate synergistic total linkage and pandemic metrics. Assertively initiate interactive architectures with end-to-end...</p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div class="c-top"><span class="badge rounded-pill bg-info title">Technology</span></div>
-                                    <div class="c-bottom">
-                                        <h5>The world needs true geniuses now more than ever</h5>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-xl-12" style="padding-bottom: 20px;">
                         <h4 style="font-weight: bold;">Latest Articles</h4>
-                        <div class="row">
+                        <div class="row" id="posts">
+                            @foreach($posts as $post)
                             <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-empty">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5>Does a blog post look better with a featured image?</h5>
-                                        <p>Authoritatively pontificate synergistic total linkage and pandemic metrics. Assertively initiate interactive architectures with end-to-end...</p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
+                                @if($post->featured_image != null)
+                                    @if(mt_rand(1, 100)  < 50)
+                                        <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
+                                            <div><a href="/post/{{ $post->slug }}">
+                                                @foreach($post->tags->take(3) as $tag)
+                                                    <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                                @endforeach
+                                                <h5 style="color: var(--bs-gray-100);">{{ $post->title }}</h5>
+                                                <p></p>
+                                                <div style="font-size: 12px;">
+                                                    <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                    <span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                    <span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                                </div></a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
+                                            <a href="/post/{{ $post->slug }}">
+                                            <div class="c-top">
+                                                @foreach($post->tags->take(3) as $tag)
+                                                    <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="c-bottom">
+                                                <h5>{{ $post->title }}</h5>
+                                                <div style="font-size: 12px;">
+                                                    <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                    <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                    <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                                </div>
+                                            </div></a>
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="image-card-empty">
+                                        <div><a href="/post/{{ $post->slug }}">
+                                            @foreach($post->tags->take(3)  as $tag)
+                                                <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                            @endforeach
+                                            <h5>{{ $post->title }}</h5>
+                                            <p>{!! Str::limit(strip_tags($slide->content), 150, '...') !!}.</p>
+                                            <div style="font-size: 12px;">
+                                                <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                            </div></a>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5 style="color: var(--bs-gray-100);">The world needs true geniuses now more than ever</h5>
-                                        <p></p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div class="c-top"><span class="badge rounded-pill bg-info title">Technology</span></div>
-                                    <div class="c-bottom">
-                                        <h5>The world needs true geniuses now more than ever</h5>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5 style="color: var(--bs-gray-100);">The world needs true geniuses now more than ever</h5>
-                                        <p></p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-empty" style="background-color: #fff;">
-                                    <div><span class="badge rounded-pill bg-info title">Technology</span>
-                                        <h5>Does a blog post look better with a featured image?</h5>
-                                        <p>Authoritatively pontificate synergistic total linkage and pandemic metrics. Assertively initiate interactive architectures with end-to-end...</p>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-4">
-                                <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;https://res.cloudinary.com/dthhh7czy/image/upload/c_fit,h_1200,w_auto/v1/images/projects/bab490de6615cf616420ded27150f20e.jpg&quot;) center center / cover no-repeat;">
-                                    <div class="c-top"><span class="badge rounded-pill bg-info title">Technology</span></div>
-                                    <div class="c-bottom">
-                                        <h5>The world needs true geniuses now more than ever</h5>
-                                        <div style="font-size: 12px;"><img style="border-radius: 20px;width: 20px;height: 20px;" src="/img/cM6tLj13_400x400.jpeg"><span style="margin-left: 5px;margin-right: 10px;">Lisa Scholfield</span><span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;4 weeks ago</span></div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col">
-                        <div class="text-center" style="margin-top: 50px;margin-bottom: 50px;"><button class="btn btn-outline-info btn-lg text-uppercase" type="button" style="border-radius: 0px;">Load More</button></div>
+                        <div class="text-center" style="margin-top: 50px;margin-bottom: 50px;">
+                            <button class="btn btn-outline-info btn-lg text-uppercase" id="loadMore" data-page="2" data-link="/?page=" data-div="#posts" type="button" style="border-radius: 0px;">Load More</button></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $("#loadMore").click(function() {
+        $div = $($(this).data('div')); //div to append
+        $link = $(this).data('link'); //current URL
+
+        $page = $(this).data('page'); //get the next page #
+        $href = $link + $page; //complete URL
+        $.get($href, function(response) { //append data
+            $html = $(response).find("#posts").html(); 
+            $div.append($html);
+        });
+
+        $(this).data('page', (parseInt($page) + 1)); //update page #
+        });
+    </script>
     <!-- include footer -->
     @include('footer')
     

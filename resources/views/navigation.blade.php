@@ -5,9 +5,6 @@
                 <li class="nav-item search"><a class="nav-link text-uppercase" id="search" href="#" style="color: rgb(84,101,116);"><i class="fa fa-search" style="color: rgb(84, 101, 116);"></i></a></li>
                 <li class="nav-item hide" id="search-box"><a class="nav-link" href="#"><input type="text" id="search-box-input" style="height: 20px;border-radius: 20px;border: 1px solid rgb(84,101,116) ;" onchange="search(event)"></a>
                     <div class="dropdown-menu" id="search-result" style="margin-left: 10px;">
-                        <a class="dropdown-item" href="#">First Item</a>
-                        <a class="dropdown-item" href="#">Second Item</a>
-                        <a class="dropdown-item" href="#">Third Item</a>
                     </div>
                 </li>
             </ul>
@@ -17,25 +14,26 @@
 
 <script type="text/javascript">
     function search(e) {
-        let t = e.target.value;
-        if (document.activeElement === e.target && "" != t) {
+        let search = e.target.value;
+        if (document.activeElement === e.target && "" != search) {
             fetch("/api/search", {
-                method: 'POST', // or 'PUT'
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: {
-                    search: t
-                },
+                body: JSON.stringify({search}),
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
-                })
+                let result = document.querySelector("#search-result")
+                result.classList.add("show")
+                data.forEach(post => {
+                    result.innerHTML += `<a class='dropdown-item' href='/post/${post.slug}'>${post.title}</a>`;
+                });
+            })
             .catch((error) => {
-                console.error('Error:', error);
+                console.log('Error:', error);
             });
-            document.querySelector("#search-result").classList.add("show");
         } else {
             document.querySelector("#search-result").classList.remove("show")
         }

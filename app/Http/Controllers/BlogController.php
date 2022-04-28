@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Wink\WinkPost;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $date = now()->format('Y-m');
+        $slides = WinkPost::with('tags')
+          ->live()
+          ->where('publish_date', 'LIKE', '%'.$date.'%')
+          ->inRandomOrder()->limit(3)->get();
+        $posts = WinkPost::with('tags')
+          ->live()
+          ->orderBy('publish_date', 'DESC')
+          ->paginate(3);
+        return view('index', compact('posts', 'slides'));
     }
 
     public function show($slug)
@@ -20,9 +29,9 @@ class BlogController extends Controller
     public function search(Request $request) {
         $slug = $request->search;
 
-        $post = WinkPost::live()->where('slug','LIKE','%'.$slug.'%')->get();
+        $posts = WinkPost::live()->where('slug','LIKE','%'.$slug.'%')->get();
 
-        return response()->json($post);
+        return response()->json($posts);
 
     }
 }

@@ -25,11 +25,6 @@
     @endif
     <!-- include navigation -->
     @include('head')
-    <style>
-        a {
-            text-decoration: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -37,7 +32,7 @@
         <!-- include navigation -->
         @include('navigation')
 
-        <div style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;opacity: 1;transform: perspective(0px);height: 500px;"></div>
+        <div style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) , url(&quot;{{ $post->featured_image != null ? $post->featured_image : '/img/default-featured-image.jpeg' }}&quot;) center center / cover no-repeat;opacity: 1;transform: perspective(0px);height: 500px;"></div>
         <div class="row blog-b">
             <div class="col">
                 <h3 style="font-weight: bold;">{{ $post->title }}</h3>
