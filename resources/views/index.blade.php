@@ -63,58 +63,58 @@
                         <h4 style="font-weight: bold;">Latest Articles</h4>
                         <div class="row" id="posts">
                             @foreach($posts as $post)
-                            <div class="col-lg-6 col-xl-4">
-                                @if($post->featured_image != null)
-                                    @if(mt_rand(1, 100)  < 50)
-                                        <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
+                                <div class="col-lg-6 col-xl-4">
+                                    @if($post->featured_image != null)
+                                        @if(mt_rand(1, 100)  < 50)
+                                            <div class="image-card" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
+                                                <div><a href="/post/{{ $post->slug }}">
+                                                    @foreach($post->tags->take(3) as $tag)
+                                                        <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                                    @endforeach
+                                                    <h5 style="color: var(--bs-gray-100);">{{ $post->title }}</h5>
+                                                    <p></p>
+                                                    <div style="font-size: 12px;">
+                                                        <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $post->author->avatar != null ? $post->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                        <span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                        <span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                                    </div></a>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
+                                                <a href="/post/{{ $post->slug }}">
+                                                <div class="c-top">
+                                                    @foreach($post->tags->take(3) as $tag)
+                                                        <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
+                                                    @endforeach
+                                                </div>
+                                                <div class="c-bottom">
+                                                    <h5>{{ $post->title }}</h5>
+                                                    <div style="font-size: 12px;">
+                                                        <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $post->author->avatar != null ? $post->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                        <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                        <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                                    </div>
+                                                </div></a>
+                                            </div>
+                                        @endif
+                                    @else
+                                        <div class="image-card-empty">
                                             <div><a href="/post/{{ $post->slug }}">
-                                                @foreach($post->tags->take(3) as $tag)
+                                                @foreach($post->tags->take(3)  as $tag)
                                                     <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
                                                 @endforeach
-                                                <h5 style="color: var(--bs-gray-100);">{{ $post->title }}</h5>
-                                                <p></p>
+                                                <h5>{{ $post->title }}</h5>
+                                                <p>{!! Str::limit(strip_tags($post->content), 150, '...') !!}.</p>
                                                 <div style="font-size: 12px;">
-                                                    <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
-                                                    <span style="color: var(--bs-light);margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
-                                                    <span style="color: var(--bs-light);"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
+                                                    <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $post->author->avatar != null ? $post->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
+                                                    <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
+                                                    <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
                                                 </div></a>
                                             </div>
                                         </div>
-                                    @else
-                                        <div class="image-card-2" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(&quot;{{ $post->featured_image }}&quot;) center center / cover no-repeat;">
-                                            <a href="/post/{{ $post->slug }}">
-                                            <div class="c-top">
-                                                @foreach($post->tags->take(3) as $tag)
-                                                    <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
-                                                @endforeach
-                                            </div>
-                                            <div class="c-bottom">
-                                                <h5>{{ $post->title }}</h5>
-                                                <div style="font-size: 12px;">
-                                                    <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
-                                                    <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
-                                                    <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
-                                                </div>
-                                            </div></a>
-                                        </div>
                                     @endif
-                                @else
-                                    <div class="image-card-empty">
-                                        <div><a href="/post/{{ $post->slug }}">
-                                            @foreach($post->tags->take(3)  as $tag)
-                                                <span class="badge rounded-pill bg-info title">{{ $tag->name }}</span>
-                                            @endforeach
-                                            <h5>{{ $post->title }}</h5>
-                                            <p>{!! Str::limit(strip_tags($slide->content), 150, '...') !!}.</p>
-                                            <div style="font-size: 12px;">
-                                                <img style="border-radius: 20px;width: 20px;height: 20px;" src="{{ $slide->author->avatar != null ? $slide->author->avatar : '/img/cM6tLj13_400x400.jpeg' }}">
-                                                <span style="margin-left: 5px;margin-right: 10px;">{{ $post->author->name}}</span>
-                                                <span style="color: #546574;"><i class="fa fa-calendar-o"></i>&nbsp; &nbsp;{{ $post->publish_date->diffForHumans() }}</span>
-                                            </div></a>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
